@@ -1,0 +1,110 @@
+Step- 1 Open Command Prompt .
+
+20-09-21   ENV_P1 - Django and MySql   Python 3.7.4
+	Env_P2 - Django and Oracle
+	Env_P3 - Django and Sqlite
+	Env_P4 - Django and PostGreSql  
+
+Step-2
+Create Environment  python -m venv ENV_TY_IT
+
+Step-3
+Activate Environment  ENV_20_09\script\activate
+
+Step-4
+Install Django + all Software you are using in your project.
+
+Command to install Software is
+pip install SW_NAME
+pip install django
+
+Step-5
+django-admin startproject SGGS_20_09_21
+cd SGGS_20_09_21_PROJECT  // Change Directory
+
+Step-6 Create Multiple APP one by one
+
+django-admin startapp student
+django-admin startapp department
+django-admin startapp Library
+django-admin startapp Account
+
+models.py   Define Database- models-Tables - Schema here
+admin.py    register models
+
+Open Project_FOlder\setting.py and register all App
+
+Step-7  Run Command
+
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver
+
+
+
+	 
+
+20-09-22     Python 5.6.7  , Django, Oracle,
+
+
+SGGS  
+
+1 Student    Record(S_name,Address,DOB,Branch,Fees)
+             Hostel(S_name,Hostel_name, room_no,Date)
+
+2 Department  Dep_Inf(S_name, Class, Year)
+               Dep_Achiv(S_name,date,Prize,Aciv_Detail)
+
+3 Library    Lib_Record(S_name,date,book_name)
+
+4 Account   Acct_Rec(S_name,Fees_type,Amount,Date)
+
+setting.py
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'student',
+    'department',
+    'Library',
+    'Account', 
+    
+]
+
+from django.db import models
+
+class Country(models.Model):
+    name = models.CharField(max_length=30)
+
+
+    def __str__(self):
+        return self.name
+
+class City(models.Model):
+    name = models.CharField(max_length=30)
+    country_field = models.ForeignKey(Country, on_delete=models.CASCADE)
+    population = models.PositiveIntegerField()
+
+
+
+
+class Subject1(models.Model):
+    name = models.CharField(max_length=30)
+    subject = models.CharField(max_length=30)
+    email = models.EmailField()
+    date = models.DateField()
+    status = models.BooleanField()
+
+
+
+class Marks(models.Model):
+    subject = models.CharField(max_length=30)
+    marks = models.PositiveIntegerField()
+    
+    #'subject','marks'
+
